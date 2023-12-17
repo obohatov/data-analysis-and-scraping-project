@@ -3,6 +3,7 @@ import subprocess
 import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
+
 from scrapping.config import TECHNOLOGIES
 
 subprocess.run(['scrapy', 'crawl', 'vacancies', '-O', 'djinni.csv'])
@@ -19,7 +20,7 @@ tech_counts.plot(kind='bar', color="skyblue")
 plt.title(f"Top 20 Technologies for Python Developers")
 plt.xlabel("Technologies")
 plt.ylabel("Number of vacancies")
-plt.savefig("top-20-technologies.png")
+plt.savefig("visualisation/top-20-technologies.png")
 
 
 def correlation_diagram() -> None:
@@ -30,7 +31,7 @@ def correlation_diagram() -> None:
     ax = sns.heatmap(numbers.corr(), annot=True, fmt=".2f", cmap="coolwarm")
     ax.set_yticklabels(ax.get_yticklabels(), rotation=90)
     plt.title("Correlation Heatmap")
-    plt.savefig("correlation-heatmap.png")
+    plt.savefig("visualisation/correlation-heatmap.png")
 
 
 def generate_wordcloud() -> None:
@@ -43,7 +44,7 @@ def generate_wordcloud() -> None:
     plt.figure(figsize=(5, 3))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
-    plt.savefig("wordcloud.png")
+    plt.savefig("visualisation/wordcloud.png")
 
 
 if __name__ == "__main__":
