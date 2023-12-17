@@ -86,7 +86,6 @@ TECHNOLOGIES = [
     "Neo4j",
     "Golang",
     "Terraform",
-    "Go",
     "k8s",
     "CI/CD",
     "Data Modeling",

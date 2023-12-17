@@ -1,7 +1,7 @@
 import scrapy
 from scrapy.http import Response
 
-from .config import TECHNOLOGIES
+from scrapping.config import TECHNOLOGIES
 
 
 class VacanciesSpider(scrapy.Spider):
