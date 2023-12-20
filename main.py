@@ -31,7 +31,7 @@ def correlation_diagram() -> None:
     ax = sns.heatmap(numbers.corr(), annot=True, fmt=".2f", cmap="coolwarm")
     ax.set_yticklabels(ax.get_yticklabels(), rotation=90)
     plt.title("Correlation Heatmap")
-    plt.savefig("visualisation/correlation-heatmap.png")
+    plt.savefig("additional-visualisation/correlation-heatmap.png")
 
 
 def generate_wordcloud() -> None:
@@ -44,7 +44,7 @@ def generate_wordcloud() -> None:
     plt.figure(figsize=(5, 3))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
-    plt.savefig("visualisation/wordcloud.png")
+    plt.savefig("additional-visualisation/wordcloud.png")
 
 
 if __name__ == "__main__":

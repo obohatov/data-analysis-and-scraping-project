@@ -1,5 +1,6 @@
 import scrapy
 from scrapy.http import Response
+from typing import Generator
 
 from scrapping.config import TECHNOLOGIES
 
@@ -9,7 +10,7 @@ class VacanciesSpider(scrapy.Spider):
     allowed_domains = ["djinni.co"]
     start_urls = ["https://djinni.co/jobs/?primary_keyword=Python"]
 
-    def parse(self, response: Response, **kwargs):
+    def parse(self, response: Response, **kwargs) -> Generator[scrapy.Request, None, None]:
         for vacancy in response.css(".job-list-item"):
             vacancy_detail_url = vacancy.css(".job-list-item__link::attr(href)").get()
 
@@ -19,7 +20,7 @@ class VacanciesSpider(scrapy.Spider):
         if next_page:
             yield response.follow(next_page, callback=self.parse)
 
-    def _parse_vacancy(self, response: Response) -> dict:
+    def _parse_vacancy(self, response: Response) -> Generator[dict, None, None]:
         experience_years = self.get_experience_years(response)
         work_type, company_type = self.get_additional_info(response)
 
